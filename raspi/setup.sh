@@ -1,8 +1,5 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install -y git
-
 # Set host name
 sudo hostnamectl set-hostname racerpi1
 # TODO sudo reboot now
