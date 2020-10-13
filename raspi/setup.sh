@@ -25,3 +25,6 @@ sudo apt install -y python3-pip
 pip3 install prometheus_client
 pip3 install Bluetin-Echo
 
+pushd `dirname "$0"`
+sudo docker run -d -p 9090:9090 -v "`pwd`/prometheus.yml:/etc/prometheus/prometheus.yml" --restart unless-stopped --network host prom/prometheus
+popd
