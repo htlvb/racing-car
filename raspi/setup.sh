@@ -20,4 +20,8 @@ sudo systemctl enable grafana-server.service
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-docker run --restart unless-stopped -p 9090:9090 -v ./prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+# Install pip and packages
+sudo apt install -y python3-pip
+pip3 install prometheus_client
+pip3 install Bluetin-Echo
+
