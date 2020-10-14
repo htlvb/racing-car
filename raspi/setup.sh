@@ -4,8 +4,6 @@
 sudo apt install -y python3-pip
 
 # Install docker (see https://docs.docker.com/engine/install/debian/)
-# curl -fsSL https://get.docker.com -o get-docker.sh
-# sudo sh get-docker.sh
 curl -fsSL https://download.docker.com/linux/raspbian/gpg | sudo apt-key add -
 echo "deb [arch=armhf] https://download.docker.com/linux/raspbian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker-ce.list
 sudo apt update
