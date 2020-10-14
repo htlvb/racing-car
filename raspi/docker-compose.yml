@@ -29,3 +29,7 @@ services:
         build: ./temperature-humidity
         privileged: true
         restart: unless-stopped
+    system:
+        build: ./system
+        privileged: true
+        restart: unless-stopped

@@ -9,3 +9,7 @@ scrape_configs:
     scrape_interval: 3s
     static_configs:
       - targets: ['temperature-humidity:8000']
+  - job_name: 'system'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['system:8000']
