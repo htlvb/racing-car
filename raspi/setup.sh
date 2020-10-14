@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Set host name
-sudo hostnamectl set-hostname racerpi1
-# TODO sudo reboot now
-
 # Install pip
 sudo apt install -y python3-pip
 
