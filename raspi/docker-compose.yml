@@ -25,3 +25,7 @@ services:
         build: ./distance
         privileged: true
         restart: unless-stopped
+    distance:
+        build: ./temperature-humidity
+        privileged: true
+        restart: unless-stopped

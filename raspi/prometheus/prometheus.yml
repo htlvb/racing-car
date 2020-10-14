@@ -5,3 +5,6 @@ scrape_configs:
   - job_name: 'distance'
     static_configs:
       - targets: ['distance:8000']
+  - job_name: 'temperature-humidity'
+    static_configs:
+      - targets: ['temperature-humidity:8000']
