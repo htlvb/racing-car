@@ -11,4 +11,4 @@ sudo apt install -y docker-ce
 sudo pip3 install docker-compose
 
 # Run app
-docker-compose up -d
+sudo docker-compose up -d
