@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from prometheus_client import start_http_server, Gauge
+import signal,sys
 import time
 import Adafruit_DHT
 
@@ -18,6 +19,11 @@ temperatureMetric = Gauge('temperature', 'Temperature in °C')
 humidityMetric = Gauge('humidity', 'Humidity in %')
 
 start_http_server(8000)
+
+def handle_sigterm(*args):
+    sys.exit()
+
+signal.signal(signal.SIGTERM, handle_sigterm)
 
 while True:
     # Temperatur und Luftfeuchtigkeit

@@ -30,11 +30,11 @@ distanceMetric = Gauge('distance', 'Distance in cm')
 
 start_http_server(8000)
 
-def onExit(signum, frame):
+def handle_sigterm(*args):
     sensor.stop()
     sys.exit()
 
-signal.signal(signal.SIGINT, onExit)
+signal.signal(signal.SIGTERM, handle_sigterm)
 
 while True:
     abstand = sensor.read('cm', n)
