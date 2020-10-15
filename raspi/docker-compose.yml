@@ -11,6 +11,7 @@ services:
             - prometheus
         environment:
             GF_DASHBOARDS_MIN_REFRESH_INTERVAL: 1ms
+            GF_INSTALL_PLUGINS: marcusolsson-dynamictext-panel
         restart: unless-stopped
     prometheus:
         image: prom/prometheus
