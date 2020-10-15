@@ -7,8 +7,6 @@ services:
         volumes:
             - "./grafana/config:/etc/grafana/provisioning"
             - "./grafana/dashboards:/var/lib/grafana/dashboards"
-        links:
-            - prometheus
         environment:
             GF_DASHBOARDS_MIN_REFRESH_INTERVAL: 1ms
             GF_INSTALL_PLUGINS: marcusolsson-dynamictext-panel
@@ -19,8 +17,6 @@ services:
             - "9090:9090"
         volumes:
             - ./prometheus:/etc/prometheus
-        links:
-            - distance
         restart: unless-stopped
     distance:
         build: ./distance
