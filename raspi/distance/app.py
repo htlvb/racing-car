@@ -22,10 +22,6 @@ sensor = Echo(trigger_pin, echo_pin, schallgeschw)
 # Zeit nach der wieder gesendet werden soll in Sekunden
 sendepause = 0.5
 
-# Fehler-Zaehler
-errors = 0
-response = 0
-
 distanceMetric = Gauge('distance', 'Distance in cm')
 
 start_http_server(8000)
