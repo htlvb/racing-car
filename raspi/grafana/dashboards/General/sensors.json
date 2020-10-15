@@ -32,6 +32,8 @@
         "y": 0
       },
       "id": 10,
+      "interval": "",
+      "maxDataPoints": 1,
       "options": {
         "content": "* **Host name**: {{hostname}}\n* **Platform**: {{platform}}\n* **Architecture**: {{architecture}}\n* **Processor**: {{processor}}\n* **OS version**: {{osVersion}}\n* **Boot time**: {{bootTime}}\n* **System time**: {{systemTime}}"
       },
@@ -210,6 +212,63 @@
         "defaults": {
           "custom": {},
           "mappings": [],
+          "max": 30,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "velocitykmh"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 8
+      },
+      "id": 12,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.2.1",
+      "targets": [
+        {
+          "expr": "speed",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Speed",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
           "max": 50,
           "min": -10,
           "thresholds": {
@@ -234,9 +293,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 6,
-        "x": 0,
+        "x": 6,
         "y": 8
       },
       "id": 6,
@@ -297,9 +356,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 6,
-        "x": 6,
+        "x": 12,
         "y": 8
       },
       "id": 4,
@@ -344,9 +403,9 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
+        "h": 8,
+        "w": 6,
+        "x": 18,
         "y": 8
       },
       "hiddenSeries": false,
@@ -454,5 +513,5 @@
   "timezone": "",
   "title": "Sensoren",
   "uid": "tBnp-fRRk",
-  "version": 11
+  "version": 2
 }
