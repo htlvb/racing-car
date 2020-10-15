@@ -258,9 +258,10 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
+      "timeFrom": "2s",
       "timeShift": null,
       "title": "Speed",
+      "transformations": [],
       "type": "gauge"
     },
     {
@@ -513,5 +514,5 @@
   "timezone": "",
   "title": "Sensoren",
   "uid": "tBnp-fRRk",
-  "version": 2
+  "version": 3
 }
