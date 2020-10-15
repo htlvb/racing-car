@@ -19,28 +19,20 @@ eventsPerRound = 20
 diameter = 0.110 # m
 circumference = diameter * math.pi
 
-# ---------- Callback_Lichtschranke ----------
-def Callback_Lichtschranke( channel):
-    isMoving = True
-
-    if n >= eventsPerRound:
-        t1 = time.time()
-        dT = t1 - t0
-        t0 = t1
-        speed = (1 / diameter) * dT / 3.6
-        n -= eventsPerRound
-
-# Setup Variablen
 n = 0
-freq = 0.0
 dT = 0.0
-rpm = 0.0
 t0 = time.time()
-isMoving = False
+t1 = t0
+speed = 0
+
+# ---------- Callback_Lichtschranke ----------
+def Callback_Lichtschranke(channel):
+    global n
+    n = n + 1
 
 # Setup Lichtschranke
 GPIO.setup( pin, GPIO.IN) #, pull_up_down=GPIO.PUD_UP)
-GPIO.add_event_detect( pin, GPIO.RISING, callback = Callback_Lichtschranke, bouncetime=2)
+GPIO.add_event_detect( pin, GPIO.RISING, callback = Callback_Lichtschranke)
 
 speedMetric = Gauge('speed', 'Speed in km/h')
 
@@ -53,9 +45,13 @@ def handle_sigterm(*args):
 signal.signal(signal.SIGTERM, handle_sigterm)
 
 while True:
-    if not isMoving:
-        speedMetric.set(0)
-    else:
-        speedMetric.set(rpm)
-    isMoving = False
+    t1 = time.time()
+    dT = t1 - t0
+    t0 = t1
+    steps = n
+    rounds = steps / eventsPerRound
+    speed = (rounds * circumference) / (3.6 * dT)
+    n -= steps
+    speedMetric.set(speed)
+    
     time.sleep(sendepause)
