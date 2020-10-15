@@ -5,6 +5,9 @@ scrape_configs:
   - job_name: 'distance'
     static_configs:
       - targets: ['distance:8000']
+  - job_name: 'power-consumption'
+    static_configs:
+      - targets: ['power-consumption:8000']
   - job_name: 'speed'
     static_configs:
       - targets: ['speed:8000']
