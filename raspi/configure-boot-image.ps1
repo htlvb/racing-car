@@ -22,3 +22,9 @@ network={
 Set-Content "${driveLetter}:\wpa_supplicant.conf" $wifiSetupConfig
 
 New-Item "${driveLetter}:\ssh" -Force | Out-Null
+
+$file = "${driveLetter}:\config.txt"
+(Get-Content $file) `
+    -replace "^#(?=dtparam=i2c_arm=on$)","" `
+    -replace "^#(?=dtparam=spi=on$)","" `
+    | Set-Content $file -Encoding UTF8
