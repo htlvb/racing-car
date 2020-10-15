@@ -2,19 +2,22 @@ global:
   scrape_interval: 1s
 
 scrape_configs:
+  - job_name: 'acceleration-temperature'
+    static_configs:
+      - targets: ['acceleration-temperature:8000']
   - job_name: 'distance'
     static_configs:
       - targets: ['distance:8000']
+  - job_name: 'motor-temperature-humidity'
+    scrape_interval: 3s
+    static_configs:
+      - targets: ['motor-temperature-humidity:8000']
   - job_name: 'power-consumption'
     static_configs:
       - targets: ['power-consumption:8000']
   - job_name: 'speed'
     static_configs:
       - targets: ['speed:8000']
-  - job_name: 'temperature-humidity'
-    scrape_interval: 3s
-    static_configs:
-      - targets: ['temperature-humidity:8000']
   - job_name: 'system'
     scrape_interval: 10s
     static_configs:

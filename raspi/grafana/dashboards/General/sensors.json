@@ -307,6 +307,7 @@
     },
     {
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -336,16 +337,15 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 4,
         "x": 12,
         "y": 8
       },
-      "id": 6,
-      "interval": "",
+      "id": 16,
       "options": {
         "reduceOptions": {
           "calcs": [
-            "mean"
+            "last"
           ],
           "fields": "",
           "values": false
@@ -365,6 +365,68 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Temperature",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 50,
+          "min": -10,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 75
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 16,
+        "y": 8
+      },
+      "id": 6,
+      "interval": "",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.2.1",
+      "targets": [
+        {
+          "expr": "motorTemperature",
+          "interval": "",
+          "legendFormat": "Motor temperature",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Motor temperature",
       "type": "gauge"
     },
     {
@@ -399,8 +461,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 18,
+        "w": 4,
+        "x": 20,
         "y": 8
       },
       "id": 4,
@@ -418,15 +480,15 @@
       "pluginVersion": "7.2.1",
       "targets": [
         {
-          "expr": "humidity",
+          "expr": "motorHumidity",
           "interval": "",
-          "legendFormat": "Humidity",
+          "legendFormat": "Motor humidity",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Humidity",
+      "title": "Motor humidity",
       "type": "gauge"
     },
     {

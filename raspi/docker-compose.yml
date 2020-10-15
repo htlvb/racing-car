@@ -18,8 +18,16 @@ services:
         volumes:
             - ./prometheus:/etc/prometheus
         restart: unless-stopped
+    acceleration-temperature:
+        build: ./acceleration-temperature
+        privileged: true
+        restart: unless-stopped
     distance:
         build: ./distance
+        privileged: true
+        restart: unless-stopped
+    motor-temperature-humidity:
+        build: ./motor-temperature-humidity
         privileged: true
         restart: unless-stopped
     power-consumption:
@@ -28,10 +36,6 @@ services:
         restart: unless-stopped
     speed:
         build: ./speed
-        privileged: true
-        restart: unless-stopped
-    temperature-humidity:
-        build: ./temperature-humidity
         privileged: true
         restart: unless-stopped
     system:

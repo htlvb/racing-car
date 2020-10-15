@@ -15,8 +15,8 @@ pin = 17
 # Zeit nach der wieder gesendet werden soll in Sekunden
 sendepause = 3
 
-temperatureMetric = Gauge('temperature', 'Temperature in °C')
-humidityMetric = Gauge('humidity', 'Humidity in %')
+temperatureMetric = Gauge('motorTemperature', 'Motor temperature in °C')
+humidityMetric = Gauge('motorHumidity', 'Motor humidity in %')
 
 start_http_server(8000)
 
