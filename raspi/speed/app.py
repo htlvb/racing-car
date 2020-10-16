@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 from prometheus_client import start_http_server, Gauge
 import math
@@ -7,34 +6,26 @@ import signal,sys
 import time
 import RPi.GPIO as GPIO
 
-# GPIO-Setup
-GPIO.setmode( GPIO.BCM) # GPIO Nummern statt Board Nummern
-# Pin setzen
-pin = 25
-
-# Zeit nach der wieder gesendet werden soll in Sekunden
-sendepause = 0.5
-
-eventsPerRound = 20
+events_per_round = 20
 diameter = 0.110 # m
 circumference = diameter * math.pi
 
 n = 0
-dT = 0.0
+dt = 0.0
 t0 = time.time()
 t1 = t0
 speed = 0
 
-# ---------- Callback_Lichtschranke ----------
-def Callback_Lichtschranke(channel):
+def tick(channel):
     global n
     n = n + 1
 
-# Setup Lichtschranke
-GPIO.setup( pin, GPIO.IN) #, pull_up_down=GPIO.PUD_UP)
-GPIO.add_event_detect( pin, GPIO.RISING, callback = Callback_Lichtschranke)
+GPIO.setmode(GPIO.BCM)
+pin = 25
+GPIO.setup(pin, GPIO.IN)
+GPIO.add_event_detect(pin, GPIO.RISING, callback = tick)
 
-speedMetric = Gauge('speed', 'Speed in km/h')
+speed_metric = Gauge('speed', 'Speed in km/h')
 
 start_http_server(8000)
 
@@ -46,12 +37,12 @@ signal.signal(signal.SIGTERM, handle_sigterm)
 
 while True:
     t1 = time.time()
-    dT = t1 - t0
+    dt = t1 - t0
     t0 = t1
     steps = n
-    rounds = steps / eventsPerRound
-    speed = (rounds * circumference) / (3.6 * dT)
+    rounds = steps / events_per_round
+    speed = (rounds * circumference) / (3.6 * dt)
     n -= steps
-    speedMetric.set(speed)
+    speed_metric.set(speed)
     
-    time.sleep(sendepause)
+    time.sleep(0.5)
