@@ -216,7 +216,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "unit": "amp"
         },
         "overrides": []
       },
@@ -283,7 +284,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:65",
-          "format": "short",
+          "format": "amp",
           "label": "",
           "logBase": 1,
           "max": "30",
@@ -737,5 +738,5 @@
   "timezone": "",
   "title": "Sensoren",
   "uid": "tBnp-fRRk",
-  "version": 5
+  "version": 6
 }
