@@ -8,15 +8,12 @@ param (
 $wifiSetupConfig = @"
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
-ap_scan=1
-fast_reauth=1
-country=JP
 
 network={
     ssid="$($wifiCredential.UserName)"
     psk="$($wifiCredential.GetNetworkCredential().Password)"
-    id_str="0"
-    priority=100
+    scan_ssid=1
+    key_mgmt=WPA-PSK
 }
 "@
 Set-Content "${driveLetter}:\wpa_supplicant.conf" $wifiSetupConfig
